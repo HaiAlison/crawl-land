@@ -32,4 +32,5 @@ ENV start_lat = 10.773
 ENV end_lat=10.770
 ENV long=106.6481
 COPY . .
-CMD [ "python3", "./index.py" ]
+CMD echo run now
+CMD [ "python3", "/usr/src/app/index.py" ]
