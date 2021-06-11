@@ -27,7 +27,7 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libnss3.so /usr/lib/libnss3.so
 RUN wget -q "http://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
     && unzip /tmp/chromedriver.zip -d /usr/bin/ \
     && rm /tmp/chromedriver.zip
-
+WORKDIR /usr/src/app
 ENV start_lat = 10.773
 ENV end_lat=10.770
 ENV long=106.6481
