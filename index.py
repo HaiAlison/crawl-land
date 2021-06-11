@@ -24,10 +24,10 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 time.sleep(2)
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("user-agent=" + USER_AGENT)
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--start-maximized")
 chrome_options.add_argument('disable-gpu')
-# chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument("--window-size=1599,796")
 chrome_options.add_argument('ignore-certificate-errors')
 
