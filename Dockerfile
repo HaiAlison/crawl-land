@@ -10,6 +10,7 @@ RUN pip install  gql
 RUN pip install  selenium
 RUN pip install  numpy
 RUN pip install  python-dotenv
+RUN pip install  psutil
 
 # Set up the Chrome PPA
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -

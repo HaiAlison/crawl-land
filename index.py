@@ -11,7 +11,7 @@ import requests
 from gql import Client, gql
 from gql.transport.requests import RequestsHTTPTransport
 import numpy as np
-
+import os, psutil
 def processLog(log):
     log = json.loads(log["message"])["message"]
     if ("Network.responseReceived" in log["method"] and "params" in log.keys()):
@@ -46,6 +46,12 @@ def run_mutation(mutation):  # A simple function to use requests.post to make th
         return request.json()
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, mutation))
+
+def memory_usage_psutil():
+    # return the memory usage in MB
+    process = psutil.Process(os.getpid())
+    mem = process.get_memory_info()[0] / float(2 ** 20)
+    return mem
 
 # Select your transport with a defined url endpoint
 transport = RequestsHTTPTransport(url="https://map.gugotech.com/graphql")
@@ -156,6 +162,12 @@ for lat in lats:
                                              "wardId": ward, "landNumber": int(lot), "mapNumber": int(pages)}
                                 result = client.execute(mutation, variable_values=variables)
                                 print(result)
+                                print("Memory usage",memory_usage_psutil())
+                                process = psutil.Process(os.getpid())
+                                print(process.memory_info().rss)  # in bytes
+                                if result['createLand']:
+                                    continue
+
             except Exception as e:
                 print(e)
                 continue
