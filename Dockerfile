@@ -5,7 +5,7 @@ RUN apt-get update -y
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
 RUN pip install  selenium-wire
-RUN pip install  chromedriver-py==91.0.4472.114
+RUN pip install  chromedriver-py==91.0.4472.19
 RUN pip install  gql
 RUN pip install  selenium
 RUN pip install  numpy
