@@ -50,7 +50,7 @@ def run_mutation(mutation):  # A simple function to use requests.post to make th
 def memory_usage_psutil():
     # return the memory usage in MB
     process = psutil.Process(os.getpid())
-    mem = process.get_memory_info()[0] / float(2 ** 20)
+    mem = process.memory_info()[0] / float(2 ** 20)
     return mem
 
 # Select your transport with a defined url endpoint
